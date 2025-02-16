@@ -62,7 +62,7 @@ if st.session_state["prerequisites"]:
 if st.session_state["modules"]:
     st.write("### Study Plan:")
     for i, module in enumerate(st.session_state["modules"]):
-        st.write(f"**Module {i+1}:** {module}")
+        st.write(f"{module}")
 
     # Select a module
     st.session_state["selected_module"] = st.selectbox("Select a module:", [f"Module {i+1}" for i in range(len(st.session_state["modules"]))])
