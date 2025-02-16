@@ -39,12 +39,12 @@ if uploaded_file is not None:
     # Submit button
     pre_sub=st.button("Submit")
 
-if pre_sub:
+    if pre_sub:
         
         
-    Prerequisites_selected=selected_items.values()
+        Prerequisites_selected=selected_items.values()
 
-    topic_query=f"""The user is familiar with the following prerequisite topics: {Prerequisites_selected} out of {Prerequisites}
+        topic_query=f"""The user is familiar with the following prerequisite topics: {Prerequisites_selected} out of {Prerequisites}
 
             Now, based on the provided document, create a structured 5-module study plan that enables the user to deeply understand the content. Ensure that:
 
@@ -54,13 +54,13 @@ if pre_sub:
         The study material is engaging, well-structured, and includes real-world examples where applicable.
         put "?|?" in the last of each module"""
 
-    result =answer_generator(retrival,topic_query)
+        result =answer_generator(retrival,topic_query)
 
-    st.markdown(result)
+        st.markdown(result)
 
-    module=result.split("?|?")
+        module=result.split("?|?")
 
-    gen_button=st.button("Create Detailed Modules ")
+        gen_button=st.button("Create Detailed Modules ")
 
 
 if gen_button:
