@@ -36,11 +36,26 @@ if uploaded_file is not None:
 
     # Submit button
     if st.button("Submit"):
-        known_items = [item for item, checked in selected_items.items() if checked]
-    
-        if known_items:
-            st.success("You have selected the following:")
-            st.write(known_items)
-        else:
-            st.warning("You didn't select anything.")
+
+        Prerequisites_selected=selected_items.values()
+
+        topic_query="""The user is familiar with the following prerequisite topics: {Prerequisites_selected} out of {Prerequisites}
+
+            Now, based on the provided document, create a structured 5-module study plan that enables the user to deeply understand the content. Ensure that:
+
+        Each module is highly detailed (at least 2500 words).
+        The explanation considers what the user already knows and avoids redundant basic explanations of known prerequisites.
+        Each module builds progressively, making it easy to grasp advanced concepts.
+        The study material is engaging, well-structured, and includes real-world examples where applicable.
+        Clearly separate each module with tripple slash  ie ///"""
+
+        result =answer_generator(retrival,Prerequisites)
+
+        module=result.split("///")
+
+        st.markdown(module)
+
+
+
+
 
