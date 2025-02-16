@@ -89,7 +89,7 @@ def answer_generator(retrieval_chain,query):
 
     result=(response["answer"])
     return{#st.subheader(body = "Difficulty Based Questions"),
-           st.write(result.text)}
+           st.write(result.text())}
 
 
 #retrival=rag_pdf(pdf)
