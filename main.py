@@ -21,6 +21,26 @@ if uploaded_file is not None:
     Computer Vision
     Ensure that the topics are listed in decreasing order of necessity comma seperated ."""
     result =answer_generator(retrival,query)
-    prerequisitory = result.split(",")
-    st.markdown(prerequisitory)
+    items = result.split(",")
+    #st.markdown(prerequisitory)
+
+    st.title("Knowledge Checklist")
+    st.write("Tick the things that you already know and click submit.")
+
+    # Dictionary to hold checkbox states
+    selected_items = {}
+
+    # Create checkboxes for each item
+    for item in items:
+        selected_items[item] = st.checkbox(item)
+
+    # Submit button
+    if st.button("Submit"):
+        known_items = [item for item, checked in selected_items.items() if checked]
+    
+        if known_items:
+            st.success("You have selected the following:")
+            st.write(known_items)
+        else:
+            st.warning("You didn't select anything.")
 
