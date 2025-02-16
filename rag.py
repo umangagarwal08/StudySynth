@@ -28,7 +28,7 @@ api_key="jbd91deBY9trpxPN0PXwbvv9wRVimiaU"
 
 
 
-pdf = PdfReader(r"C:\Users\MY\Downloads\CNN_Document.pdf")
+#pdf = PdfReader(r"C:\Users\MY\Downloads\CNN_Document.pdf")
 def rag_pdf(pdf):
 
     # Saving the entire pdf as a raw_text
@@ -86,6 +86,6 @@ def answer_generator(retrieval_chain,query):
     st.write(response["answer"])
 
 
-retrival=rag_pdf(pdf)
-query='Give me the summary of the document'
-answer_generator(retrival,query)
+#retrival=rag_pdf(pdf)
+#query='Give me the summary of the document'
+#answer_generator(retrival,query)
