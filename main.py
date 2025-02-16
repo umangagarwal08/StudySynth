@@ -49,7 +49,7 @@ if uploaded_file is not None:
         The study material is engaging, well-structured, and includes real-world examples where applicable.
         Clearly separate each module with tripple slash  ie ///"""
 
-        result =answer_generator(retrival,Prerequisites)
+        result =answer_generator(retrival,topic_query)
 
         module=result.split("///")
 
