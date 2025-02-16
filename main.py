@@ -39,7 +39,7 @@ if uploaded_file is not None:
 
         Prerequisites_selected=selected_items.values()
 
-        topic_query="""The user is familiar with the following prerequisite topics: {Prerequisites_selected} out of {Prerequisites}
+        topic_query=f"""The user is familiar with the following prerequisite topics: {Prerequisites_selected} out of {Prerequisites}
 
             Now, based on the provided document, create a structured 5-module study plan that enables the user to deeply understand the content. Ensure that:
 
@@ -53,11 +53,11 @@ if uploaded_file is not None:
 
         module=result.split("?|?")
 
-        module_query="""I am providing you with the module **{module[0]}**, based on the given document. Explain all the
+        module_query=f'''I am providing you with the module **{module[0]}**, based on the given document. Explain all the
         terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
-        Take most of the references from the document to ensure accuracy and alignment with the source material."""
+        Take most of the references from the document to ensure accuracy and alignment with the source material.'''
 
-        
+        st.title(module[0])
         result_q =answer_generator(retrival,module_query)
         st.markdown(result_q)
 
