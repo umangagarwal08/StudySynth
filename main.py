@@ -63,43 +63,44 @@ if uploaded_file is not None:
         gen_button=st.button("Create Detailed Modules ")
 
 
-if gen_button:
+        if gen_button:
         
-    if st.button("Module 1"):
-            module_query=f'''I am providing you with the module **{module[0]}**, based on the given document. Explain all the
+            if st.button("Module 1"):
+                module_query=f'''I am providing you with the module **{module[0]}**, based on the given document. Explain all the
             terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
             Take most of the references from the document to ensure accuracy and alignment with the source material.'''
-            st.title(f"Module 1")
-            result_1 =answer_generator(retrival,module_query)
-            st.markdown(result_1)
-    if st.button("Module 2"):
-            module_query=f'''I am providing you with the module **{module[1]}**, based on the given document. Explain all the
+                st.title(f"Module 1")
+                result_1 =answer_generator(retrival,module_query)
+                st.markdown(result_1)
+            if st.button("Module 2"):
+                module_query=f'''I am providing you with the module **{module[1]}**, based on the given document. Explain all the
             terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
             Take most of the references from the document to ensure accuracy and alignment with the source material.'''
-            st.title(f"Module 2")
-            result_2 =answer_generator(retrival,module_query)
-            st.markdown(result_2)
-    if st.button("Module 3"):
-            module_query=f'''I am providing you with the module **{module[2]}**, based on the given document. Explain all the
+                st.title(f"Module 2")
+                result_2 =answer_generator(retrival,module_query)
+                st.markdown(result_2)
+    
+            if st.button("Module 3"):
+                module_query=f'''I am providing you with the module **{module[2]}**, based on the given document. Explain all the
             terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
             Take most of the references from the document to ensure accuracy and alignment with the source material.'''
-            st.title(f"Module 3")
-            result_3 =answer_generator(retrival,module_query)
-            st.markdown(result_3)
-    if st.button("Module 4"):
-            module_query=f'''I am providing you with the module **{module[3]}**, based on the given document. Explain all the
+                st.title(f"Module 3")
+                result_3 =answer_generator(retrival,module_query)
+                st.markdown(result_3)
+            if st.button("Module 4"):
+                module_query=f'''I am providing you with the module **{module[3]}**, based on the given document. Explain all the
             terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
             Take most of the references from the document to ensure accuracy and alignment with the source material.'''
-            st.title(f"Module 4")
-            result_4 =answer_generator(retrival,module_query)
-            st.markdown(result_4)
-    if st.button("Module 5"):
-            module_query=f'''I am providing you with the module **{module[4]}**, based on the given document. Explain all the
+                st.title(f"Module 4")
+                result_4 =answer_generator(retrival,module_query)
+                st.markdown(result_4)
+            if st.button("Module 5"):
+                module_query=f'''I am providing you with the module **{module[4]}**, based on the given document. Explain all the
             terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
             Take most of the references from the document to ensure accuracy and alignment with the source material.'''
-            st.title(f"Module 5")
-            result_5 =answer_generator(retrival,module_query)
-            st.markdown(result_5)
+                st.title(f"Module 5")
+                result_5 =answer_generator(retrival,module_query)
+                st.markdown(result_5)
 
 
 
