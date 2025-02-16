@@ -21,10 +21,12 @@ if "modules" not in st.session_state:
 if "selected_module" not in st.session_state:
     st.session_state["selected_module"] = None
 if "questions" not in st.session_state:
-    st.session_state["questions"] = []
+    st.session_state["questions"] = {}
+if "detailed_explanations" not in st.session_state:
+    st.session_state["detailed_explanations"] = {}
 
 # Process the PDF only after submission
-if st.session_state.get("file_uploaded", False):
+if st.session_state.get("file_uploaded", False) and not st.session_state["modules"]:
     st.write("### The uploaded file requires some prerequisite knowledge. Please tick the items you are aware of so we can create the modules accordingly.")
 
     prerequisite_query = """Analyze the provided document and identify the three most essential prerequisite topics required to understand it. 
@@ -51,7 +53,7 @@ if st.session_state["prerequisites"]:
         - The explanation considers what the user already knows and avoids redundant basic explanations.
         - Each module builds progressively.
         - The study material is well-structured and engaging.
-        - Use "?|?" to separate each module put it after completing of each module .
+        - Use "?|?" to separate each module.
         """
 
         result = answer_generator(st.session_state["retrival"], study_plan_query)
@@ -62,39 +64,42 @@ if st.session_state["prerequisites"]:
 if st.session_state["modules"]:
     st.write("### Study Plan:")
     for i, module in enumerate(st.session_state["modules"]):
-        st.write(f"{module}")
+        st.write(f"**Module {i+1}:** {module}")
 
     # Select a module
-    st.session_state["selected_module"] = st.selectbox("Select a module:", [f"Module {i+1}" for i in range(len(st.session_state["modules"]))])
-    
+    selected_module_label = st.selectbox(
+        "Select a module:", 
+        [f"Module {i+1}" for i in range(len(st.session_state["modules"]))]
+    )
+
+    module_index = int(selected_module_label.split(" ")[1]) - 1
+
     if st.button("Generate Detailed Explanation"):
-        module_index = int(st.session_state["selected_module"].split(" ")[1]) - 1
-        module_query = f"""
-        I am providing you with the module **{st.session_state["modules"][module_index]}**, based on the given document.
-        Explain all terms in extreme detail, covering definitions, context, examples, and relevant background information. 
-        Take most references from the document to ensure accuracy.
-        """
-        detailed_module = answer_generator(st.session_state["retrival"], module_query)
-        st.subheader(f"{st.session_state['selected_module']} - Detailed Explanation")
-        st.markdown(detailed_module)
+        if module_index not in st.session_state["detailed_explanations"]:
+            module_query = f"""
+            I am providing you with the module **{st.session_state["modules"][module_index]}**, based on the given document.
+            Explain all terms in extreme detail, covering definitions, context, examples, and relevant background information. 
+            Take most references from the document to ensure accuracy.
+            """
+            detailed_module = answer_generator(st.session_state["retrival"], module_query)
+            st.session_state["detailed_explanations"][module_index] = detailed_module
 
-# --- EVALUATION SECTION ---
-st.sidebar.subheader("📌 Module Evaluation")
+    # Display the explanation for the selected module
+    if module_index in st.session_state["detailed_explanations"]:
+        st.subheader(f"{selected_module_label} - Detailed Explanation")
+        st.markdown(st.session_state["detailed_explanations"][module_index])
 
-if st.session_state["selected_module"]:
-    module_index = int(st.session_state["selected_module"].split(" ")[1]) - 1
-    
-    if st.sidebar.button("Generate Questions"):
+    # Generate Questions Section
+    if st.button("Generate Questions"):
         question_query = f"""
         Based on **{st.session_state['modules'][module_index]}**, create:
         - 4-5 multiple-choice questions (MCQs) with 4 answer options (mark the correct one).
         - 4-5 theoretical questions requiring written answers.
         """
-        result = answer_generator(st.session_state["retrival"], question_query)
-        st.session_state["questions"] = result.split("\n")
+        st.session_state["questions"][module_index] = answer_generator(st.session_state["retrival"], question_query).split("\n")
 
     # Display generated questions if available
-    if st.session_state["questions"]:
-        st.sidebar.write("### Questions:")
-        for q in st.session_state["questions"]:
-            st.sidebar.write(q)
+    if module_index in st.session_state["questions"]:
+        st.write("### Questions:")
+        for q in st.session_state["questions"][module_index]:
+            st.write(q)
