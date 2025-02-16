@@ -1,0 +1,8 @@
+sentence-transformers
+langchain-community
+langchain
+chromadb
+PyPDF2
+langchain_mistralai
+tf-keras
+langchain-huggingface
