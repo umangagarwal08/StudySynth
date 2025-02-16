@@ -53,13 +53,15 @@ if uploaded_file is not None:
 
         module=result.split("?|?")
 
-        module_query=f'''I am providing you with the module **{module[0]}**, based on the given document. Explain all the
-        terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
-        Take most of the references from the document to ensure accuracy and alignment with the source material.'''
+        
 
-        st.title(module[0])
-        result_q =answer_generator(retrival,module_query)
-        st.markdown(result_q)
+        for i in range(1,6):
+            module_query=f'''I am providing you with the module **{module[i-1]}**, based on the given document. Explain all the
+            terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
+            Take most of the references from the document to ensure accuracy and alignment with the source material.'''
+            st.title("Module {i}")
+            result_q =answer_generator(retrival,module_query)
+            st.markdown(result_q)
 
 
 
