@@ -13,18 +13,18 @@ if uploaded_file and st.sidebar.button("Submit PDF"):
     st.session_state["retrival"] = rag_pdf(uploaded_file)
     st.sidebar.success("PDF submitted successfully!")
 
-# Initialize session state only if not set
+# Initialize session state if not set
 if "prerequisites" not in st.session_state:
     st.session_state["prerequisites"] = []
 if "modules" not in st.session_state:
     st.session_state["modules"] = []
-if "selected_module" not in st.session_state:
-    st.session_state["selected_module"] = None
+if "detailed_plan_generated" not in st.session_state:
+    st.session_state["detailed_plan_generated"] = False
 if "questions" not in st.session_state:
     st.session_state["questions"] = {}
 
 # Process the PDF only after submission
-if st.session_state.get("file_uploaded", False):
+if st.session_state.get("file_uploaded", False) and not st.session_state["modules"]:
     st.write("### The uploaded file requires some prerequisite knowledge. Please tick the items you are aware of so we can create the modules accordingly.")
 
     prerequisite_query = """Analyze the provided document and identify the three most essential prerequisite topics required to understand it. 
@@ -58,9 +58,19 @@ if st.session_state["prerequisites"]:
         st.session_state["modules"] = result.split("?|?")
         st.success("Study plan created successfully!")
 
-# Display Modules if generated
+# Display Study Plan if generated
 if st.session_state["modules"]:
     st.write("### Study Plan:")
+    for i, module in enumerate(st.session_state["modules"]):
+        st.write(f"**Module {i+1}:** {module}")
+
+    # Generate Detailed Plan Button
+    if st.button("Generate Detailed Plan"):
+        st.session_state["detailed_plan_generated"] = True
+
+# Display Module Details & Questions if detailed plan is generated
+if st.session_state["detailed_plan_generated"]:
+    st.write("### Detailed Study Plan")
     
     for i, module in enumerate(st.session_state["modules"]):
         with st.expander(f"**Module {i+1}:**"):
