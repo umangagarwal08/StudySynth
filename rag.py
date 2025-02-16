@@ -83,13 +83,9 @@ def answer_generator(retrieval_chain,query):
     def invoke_with_retry(chain, input_data):
         return chain.invoke(input_data)
 
-
-
     response = invoke_with_retry(retrieval_chain, {"input": query})
-
-    result=(response["answer"])
-    return{#st.subheader(body = "Difficulty Based Questions"),
-           st.write(result)}
+    result=response["answer"]
+    return{result}
 
 
 #retrival=rag_pdf(pdf)

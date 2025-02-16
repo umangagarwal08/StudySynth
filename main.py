@@ -19,7 +19,8 @@ if uploaded_file is not None:
     Python
     Deep Learning
     Computer Vision
-    Ensure that the topics are listed in decreasing order of necessity."""
+    Ensure that the topics are listed in decreasing order of necessity comma seperated ."""
     result =answer_generator(retrival,query)
-    st.markdown(result)
+    prerequisitory = result.split(",")
+    st.markdown(prerequisitory)
 
