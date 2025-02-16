@@ -47,7 +47,7 @@ if uploaded_file is not None:
         The explanation considers what the user already knows and avoids redundant basic explanations of known prerequisites.
         Each module builds progressively, making it easy to grasp advanced concepts.
         The study material is engaging, well-structured, and includes real-world examples where applicable.
-        Clearly separate each module with tripple slash  ie ///"""
+        put "?|?" in the las of each module"""
 
         result =answer_generator(retrival,topic_query)
 
