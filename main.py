@@ -51,7 +51,7 @@ if uploaded_file is not None:
 
         result =answer_generator(retrival,topic_query)
 
-        module=result.split("///")
+        module=result.split("?|?")
 
         st.markdown(module)
 
