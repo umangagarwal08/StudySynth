@@ -31,8 +31,10 @@ if uploaded_file is not None:
     selected_items = {}
 
     # Create checkboxes for each item
-    for item in Prerequisites:
-        selected_items[item] = st.checkbox(item)
+    
+    selected_items[Prerequisites[0]] = st.checkbox(Prerequisites[0])
+    selected_items[Prerequisites[1]] = st.checkbox(Prerequisites[1])
+    selected_items[Prerequisites[2]] = st.checkbox(Prerequisites[2])
 
     # Submit button
     if st.button("Submit"):
