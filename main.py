@@ -43,11 +43,11 @@ if uploaded_file is not None:
 
             Now, based on the provided document, create a structured 5-module study plan that enables the user to deeply understand the content. Ensure that:
 
-        Each module is highly detailed (at least 2500 words).
+        Each module is highly detailed.
         The explanation considers what the user already knows and avoids redundant basic explanations of known prerequisites.
         Each module builds progressively, making it easy to grasp advanced concepts.
         The study material is engaging, well-structured, and includes real-world examples where applicable.
-        put "?|?" in the las of each module"""
+        put "?|?" in the last of each module"""
 
         result =answer_generator(retrival,topic_query)
 
