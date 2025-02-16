@@ -7,3 +7,4 @@ langchain_mistralai
 tf-keras
 langchain-huggingface
 streamlit
+sqlite3>=3.35.0

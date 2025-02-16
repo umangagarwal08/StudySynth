@@ -13,7 +13,7 @@ from tenacity import retry, wait_exponential, stop_after_attempt
 from langchain.docstore.document import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
-
+import sqlite3
 
 
 import warnings
