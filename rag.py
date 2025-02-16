@@ -85,7 +85,7 @@ def answer_generator(retrieval_chain,query):
 
     response = invoke_with_retry(retrieval_chain, {"input": query})
     result=response["answer"]
-    return{result}
+    return (str(result))
 
 
 #retrival=rag_pdf(pdf)
