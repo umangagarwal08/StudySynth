@@ -7,4 +7,4 @@ langchain_mistralai
 tf-keras
 langchain-huggingface
 streamlit
-sqlite3
+faiss-cpu
