@@ -20,17 +20,6 @@ if uploaded_file is not None:
     Deep Learning
     Computer Vision
     Ensure that the topics are listed in decreasing order of necessity."""
-    answer_generator(retrival,query)
-    '''    
-        confirm = st.checkbox("Proceed with generating study modules")
-        
-        if confirm:
-            if st.button("Generate Modules"):
-                with st.spinner("Generating study modules..."):
-                    modules_text = generate_modules(text)
-                    modules = modules_text.split("////////////////")
-                    st.write("### Study Modules:")
-                    for i, module in enumerate(modules, start=1):
-                        with st.expander(f"Module {i}"):
-                            st.write(module)
-'''
+    result =answer_generator(retrival,query)
+    st.markdown(result)
+
