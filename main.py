@@ -57,9 +57,9 @@ if uploaded_file is not None:
         terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
         Take most of the references from the document to ensure accuracy and alignment with the source material."""
 
-        if st.button("Module 1"):
-            result =answer_generator(retrival,module_query)
-            st.markdown(result)
+        
+        result_q =answer_generator(retrival,module_query)
+        st.markdown(result_q)
 
 
 
