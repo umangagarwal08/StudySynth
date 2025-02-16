@@ -8,3 +8,5 @@ tf-keras
 langchain-huggingface
 streamlit
 faiss-cpu
+tensorflow-cpu
+torch

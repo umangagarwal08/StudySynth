@@ -12,9 +12,9 @@ from langchain.chains import create_retrieval_chain
 from tenacity import retry, wait_exponential, stop_after_attempt
 from langchain.docstore.document import Document
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 import sqlite3
-from langchain.vectorstores import FAISS
+#from langchain.vectorstores import FAISS
 
 
 
