@@ -6,3 +6,4 @@ PyPDF2
 langchain_mistralai
 tf-keras
 langchain-huggingface
+streamlit

@@ -11,7 +11,16 @@ if uploaded_file is not None:
     st.success("PDF uploaded successfully!")
     retrival=rag_pdf(uploaded_file)
     st.write("### Prerequisites Identified:")
-    st.write()
+
+    query="""Analyze the provided document and identify the three most essential prerequisite topics required to understand it. List only the topic names in order of importance, without any explanations.
+
+    For example, if the document is about Convolutional Neural Networks (CNNs), the output should be:
+
+    Python
+    Deep Learning
+    Computer Vision
+    Ensure that the topics are listed in decreasing order of necessity."""
+    answer_generator(retrival,query)
     '''    
         confirm = st.checkbox("Proceed with generating study modules")
         

@@ -1,6 +1,6 @@
 import os 
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
-
+import streamlit as st
 from PyPDF2 import PdfReader
 import tensorflow as tf
 import torch
@@ -83,7 +83,7 @@ def answer_generator(retrieval_chain,query):
 
 
     response = invoke_with_retry(retrieval_chain, {"input": query})
-    print(response["answer"])
+    st.write(response["answer"])
 
 
 retrival=rag_pdf(pdf)
