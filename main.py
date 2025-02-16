@@ -53,7 +53,15 @@ if uploaded_file is not None:
 
         module=result.split("?|?")
 
-        st.markdown(module)
+        module_query="""I am providing you with the module **{module[0]}**, based on the given document. Explain all the
+        terms in this module in extreme detail, covering definitions, context, examples, and relevant background information. 
+        Take most of the references from the document to ensure accuracy and alignment with the source material."""
+
+        if st.button("Module 1"):
+            result =answer_generator(retrival,module_query)
+            st.markdown(result)
+
+
 
 
 
