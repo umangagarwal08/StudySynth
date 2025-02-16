@@ -14,6 +14,8 @@ from langchain.docstore.document import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 import sqlite3
+from langchain.vectorstores import FAISS
+
 
 
 import warnings
@@ -52,7 +54,7 @@ def rag_pdf(pdf):
     local_embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en")
 
 
-    vector = Chroma.from_documents(documents, local_embeddings)
+    vector = FAISS.from_documents(documents, local_embeddings)
 
     # Define a retriever interface
     retriever = vector.as_retriever()
