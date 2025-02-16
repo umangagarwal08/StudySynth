@@ -28,8 +28,9 @@ api_key="jbd91deBY9trpxPN0PXwbvv9wRVimiaU"
 
 
 
-#pdf = PdfReader(r"C:\Users\MY\Downloads\CNN_Document.pdf")
+#
 def rag_pdf(pdf):
+    pdf = PdfReader(pdf)
 
     # Saving the entire pdf as a raw_text
     from typing_extensions import Concatenate
