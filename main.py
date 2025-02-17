@@ -34,15 +34,14 @@ if st.session_state["prerequisites"]:
     if st.button("Submit Prerequisites"):
         known_topics = [topic for topic, checked in selected_prerequisites.items() if checked]
         study_plan_query = f"""
-The user is familiar with the following prerequisite topics: {selected_prerequisites} out of the total identified prerequisites: {st.session_state["prerequisites"]}. 
-
-Based on the provided document, create a structured **5-module study plan** that enables the user to deeply understand the content. Ensure the following:
-
-- Each module should cover a distinct aspect of the document, progressing in a **logical learning order**.
-- **Avoid repeating prerequisite knowledge** that the user already knows. Instead, focus on **advanced or unexplored areas**.
-- Each module should contain **detailed explanations, relevant examples, and key takeaways**.
-- Ensure the study plan is **cohesive and engaging**, guiding the user step by step.
-- Use the **exact separator** `?|?` **between modules** to ensure clear segmentation in the response.
+        The user is familiar with the following prerequisite topics: {selected_prerequisites} out of {st.session_state["prerequisites"]}.
+        Now, based on the provided document, create a structured 5-module study plan that enables the user to deeply understand the content.
+        Ensure that:
+        - Each module is highly detailed.
+        - The explanation considers what the user already knows and avoids redundant basic explanations.
+        - Each module builds progressively.
+        - The study material is well-structured and engaging.
+        - Use "?|?" to separate each module.
 
 Format:
 Module 1: [Detailed Content] 
