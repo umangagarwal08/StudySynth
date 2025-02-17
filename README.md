@@ -18,7 +18,6 @@ The **AI-Powered PDF Study Assistant** is a Streamlit-based application that all
 - **HuggingFace Embeddings** (BAAI/bge-large-en model for text embeddings)
 - **Mistral AI** (LLM for text generation)
 - **PyPDF2** (PDF text extraction)
-- **SQLite** (For optional data storage)
 
 ## Usage Guide
 1. **Upload a PDF** via the sidebar.
