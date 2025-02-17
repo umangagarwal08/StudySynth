@@ -45,10 +45,14 @@ Based on the provided document, create a structured **5-module study plan** that
 - Use the **exact separator** `?|?` **between modules** to ensure clear segmentation in the response.
 
 Format:
-Module 1: [Detailed Content] ?|?  
-Module 2: [Detailed Content] ?|?  
-Module 3: [Detailed Content] ?|?  
-Module 4: [Detailed Content] ?|?  
+Module 1: [Detailed Content] 
+?|?  
+Module 2: [Detailed Content] 
+?|?  
+Module 3: [Detailed Content] 
+?|?  
+Module 4: [Detailed Content] 
+?|?  
 Module 5: [Detailed Content]  
 
 Ensure clarity, completeness, and proper structure for each module.
