@@ -79,11 +79,12 @@ def rag_pdf(pdf):
 
 def answer_generator(retrieval_chain,query):
     # Retry mechanism with exponential backoff
+    '''
     @retry(wait=wait_exponential(multiplier=1, min=4, max=10), stop=stop_after_attempt(5))
     def invoke_with_retry(chain, input_data):
         return chain.invoke(input_data)
-
-    response = invoke_with_retry(retrieval_chain, {"input": query})
+    '''
+    response = retrieval_chain.invoke(query)
     result=response["answer"]
     return (str(result))
 

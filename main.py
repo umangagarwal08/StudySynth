@@ -19,7 +19,9 @@ session_defaults = {
     "questions": {},
     "detailed_explanations": {}
 }
-st.session_state.update({k: v for k, v in session_defaults.items() if k not in st.session_state})
+for key, value in session_defaults.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
 
 # Generate prerequisites
 if st.session_state.get("file_uploaded") and not st.session_state["modules"]:
@@ -29,7 +31,10 @@ if st.session_state.get("file_uploaded") and not st.session_state["modules"]:
 
 # Display Prerequisites
 if st.session_state["prerequisites"]:
-    selected_prerequisites = {topic: st.checkbox(topic) for topic in st.session_state["prerequisites"]}
+    selected_prerequisites = {}
+    for topic in st.session_state["prerequisites"]:
+        selected_prerequisites[topic] = st.checkbox(topic)
+
     
     if st.button("Submit Prerequisites"):
         known_topics = [topic for topic, checked in selected_prerequisites.items() if checked]
